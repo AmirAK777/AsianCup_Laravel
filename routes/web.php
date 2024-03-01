@@ -6,6 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\StadeController;
 use App\Http\Controllers\BilletController;
+use App\Http\Controllers\TicketUserController;
+use App\Http\Controllers\TicketAdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +51,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/tickets/create', [TicketUserController::class, 'create'])->name('tickets.create');
+    Route::post('/tickets', [TicketUserController::class, 'store'])->name('tickets.store');
+    Route::get('/tickets', [TicketUserController::class, 'index'])->name('tickets.index');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/tickets', [TicketAdminController::class, 'index'])->name('admin.tickets.index');
+    Route::put('/admin/tickets/{id}/assign', [TicketAdminController::class, 'assign'])->name('admin.tickets.assign');
+    Route::get('/admin/tickets/assigned', [TicketAdminController::class, 'assignedTickets'])->name('admin.tickets.assigned');
+    Route::put('/admin/tickets/{id}/resolve', [TicketAdminController::class, 'resolve'])->name('admin.tickets.resolve');
 });
 
 require __DIR__ . '/auth.php';

@@ -48,7 +48,7 @@
 
                     <div class="mb-4">
                         <x-primary-button type="submit">
-                            {{ __('Créer') }}
+                            {{ __('CREATE') }}
                         </x-primary-button>
                     </div>
                 </form>
