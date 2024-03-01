@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MatchController;
+use App\Http\Controllers\StadeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +21,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/matches/create', [MatchController::class, 'create'])->name('matches.create');
+    Route::post('/matches', [MatchController::class, 'store'])->name('matches.store');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/stades/create', [StadeController::class, 'create'])->name('stades.create');
+    Route::post('/stades', [StadeController::class, 'store'])->name('stades.store');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
