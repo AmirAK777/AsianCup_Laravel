@@ -10,9 +10,8 @@ class Stade extends Model
     use HasFactory;
     public $timestamps = false;
 
-    protected $table = 'stade'; // Nom de la table dans la base de données
+    protected $table = 'stade'; 
 
-    protected $fillable = ['name', 'cty']; // Colonnes pouvant être remplies en masse
+    protected $fillable = ['name', 'cty']; 
 
-    // Vous pouvez définir des relations avec d'autres modèles ici si nécessaire
 }

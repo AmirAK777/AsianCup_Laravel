@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\StadeController;
+use App\Http\Controllers\BilletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/stades/create', [StadeController::class, 'create'])->name('stades.create');
     Route::post('/stades', [StadeController::class, 'store'])->name('stades.store');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/billets/create', [BilletController::class, 'create'])->name('billets.create');
+    Route::post('/billets', [BilletController::class, 'store'])->name('billets.store');
 });
 
 Route::middleware('auth')->group(function () {

@@ -9,17 +9,18 @@ class MatchModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'match'; // Nom de la table dans la base de données
+    protected $table = 'match'; 
 
-    protected $primaryKey = 'match_id'; // Clé primaire de la table
+    protected $primaryKey = 'match_id'; 
 
-    public $timestamps = false; // Indique si les colonnes de création et de mise à jour sont gérées automatiquement
+    public $timestamps = false; 
 
-    protected $fillable = ['name', 'date', 'id_stade']; // Colonnes pouvant être remplies en masse
+    protected $fillable = ['name', 'date', 'id_stade']; 
 
-    // Relation avec le modèle Stade
     public function stade()
     {
         return $this->belongsTo(Stade::class, 'id_stade', 'id_stade');
     }
+
+    
 }
