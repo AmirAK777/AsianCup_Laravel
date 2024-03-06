@@ -41,7 +41,7 @@ class TicketAdminController extends Controller
     
     public function resolve(Request $request, $id)
     {
-        $ticket = Ticket::findOrFail($id);
+        $ticket = Ticket::where('id_ticket', $id)->firstOrFail();
 
         if ($ticket->id_support != auth()->user()->id) {
             return redirect()->route('admin.tickets.index')->with('error', 'You are not assigned to this ticket.');

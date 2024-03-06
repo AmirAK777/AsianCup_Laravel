@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
+    protected $primaryKey = 'id_ticket'; 
+
     protected $fillable = ['subject', 'description', 'status', 'id_user'];
 
     protected $dates = ['created_at', 'updated_at'];
