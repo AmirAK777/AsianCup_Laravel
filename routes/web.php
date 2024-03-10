@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\StadeController;
 use App\Http\Controllers\BilletController;
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\TicketController;
 
 
@@ -40,6 +41,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/stades/create', [StadeController::class, 'create'])->name('stades.create');
     Route::post('/stades', [StadeController::class, 'store'])->name('stades.store');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/teams/create', [ClubController::class, 'create'])->name('teams.create');
+    Route::post('/teams', [ClubController::class, 'store'])->name('teams.store');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

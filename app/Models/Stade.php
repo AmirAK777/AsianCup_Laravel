@@ -10,7 +10,7 @@ class Stade extends Model
     use HasFactory;
     public $timestamps = false;
 
-    protected $table = 'stade'; 
+    protected $table = 'stades'; 
 
     protected $fillable = ['name', 'cty']; 
 
