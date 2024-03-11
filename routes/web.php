@@ -31,6 +31,7 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/home', [HomeController::class, 'match'])->middleware('auth')->name('home');
 
 
 Route::middleware(['auth', 'admin'])->group(function () {

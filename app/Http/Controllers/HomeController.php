@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\User;
+use App\Models\MatchModel;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -22,5 +22,11 @@ class HomeController extends Controller
                 return redirect()->back();
             }
         }
+    }
+
+    public function match()
+    {
+        $matches = MatchModel::all();
+        return view('admin.adminhome', compact('matches'));
     }
 }
