@@ -18,12 +18,14 @@ class StadeController extends Controller
             'name' => 'required|string|max:255',
             'cty' => 'required|string|max:255',
             'image_stade' => 'required|string|max:255',
+            'emplacement' => 'required|string|max:255',
         ]);
 
         Stade::create([
             'name' => $request->name,
             'cty' => $request->cty,
             'image_stade' => $request->image_stade,
+            'emplacement' => $request->emplacement,
         ]);
 
         return redirect()->route('stades.create')->with('success', 'Stade created successfully.');

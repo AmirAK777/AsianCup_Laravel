@@ -30,16 +30,20 @@
             <li class="flex items-center mb-4">
                 <img src="https://www.ticketkosta.com/images/location.svg" alt="Emplacement" class="inline-block align-middle mr-2 h-6">
                 <span class="text-gray-700 mr-2">{{ $match->stade->name }}</span>
-                <a href="#" class="text-blue-500 hover:underline">Voir le stade</a>
-
-
-
+                
+                <a href="{{ $match->stade->emplacement }}" class="modal-open text-blue-500 hover:underline" target="_blank">Voir sur une carte</a>
             </li>
+            <img src="{{ $match->stade->image_stade }}" alt="{{ $match->stade->image_stade }}" class="w-full h-auto">
         </ul>
+ 
+        
     </a>
     <div class="flex p-4 items-center justify-center bg-gray-100">
         <x-primary-button>
-            {{ __('Register') }}
+            {{ __('Voir les billets') }}
         </x-primary-button>
     </div>
 </div>
+
+
+       

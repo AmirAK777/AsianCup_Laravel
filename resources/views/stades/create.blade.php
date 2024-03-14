@@ -27,6 +27,11 @@
                     </div>
 
                     <div class="mb-4">
+                        <label for="emplacement" class="block text-gray-700 text-sm font-bold mb-2">Emplacement du stade :</label>
+                        <input type="url" name="emplacement" id="emplacement" class="form-input rounded-md shadow-sm mt-1 block w-full" required>
+                    </div>
+
+                    <div class="mb-4">
                         <x-primary-button type="submit">
                             {{ __('Create') }}
                         </x-primary-button>
