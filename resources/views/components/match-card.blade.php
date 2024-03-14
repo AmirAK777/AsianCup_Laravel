@@ -4,7 +4,7 @@
         <a href="{{ $match->slug }}/" class="text-blue-500 hover:underline">View Details</a>
     </div>
     
-    <a href="{{ $match->slug }}/" class="block transition duration-300 hover:bg-gray-50">
+    <a href="{{ $match->slug }}/" class="block transition duration-300 hover:bg-white">
         <div class="flex justify-between items-center p-4">
             <div class="flex flex-col items-center">
                 <img src="{{ $team1->club_image }}" alt="{{ $team1->club_name }}" class="object-contain h-20 md:h-32">
@@ -33,12 +33,12 @@
                 
                 <a href="{{ $match->stade->emplacement }}" class="modal-open text-blue-500 hover:underline" target="_blank">Voir sur une carte</a>
             </li>
-            <img src="{{ $match->stade->image_stade }}" alt="{{ $match->stade->image_stade }}" class="w-full h-auto">
         </ul>
+        <img src="{{ $match->stade->image_stade }}" class="w-full h-auto">
  
         
     </a>
-    <div class="flex p-4 items-center justify-center bg-gray-100">
+    <div class="flex p-4 items-center justify-center bg-white">
         <x-primary-button>
             {{ __('Voir les billets') }}
         </x-primary-button>
