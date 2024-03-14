@@ -17,16 +17,18 @@ class HomeController extends Controller
             if ($usertype == 'user') {
                 return view('dashboard');
             } else if ($usertype == 'admin') {
-                return view('admin.adminhome');
+                $matches = MatchModel::all();
+                return view('admin.adminhome', compact('matches'));
+                // return view('admin.adminhome');
             } else {
                 return redirect()->back();
             }
         }
     }
 
-    public function match()
-    {
-        $matches = MatchModel::all();
-        return view('admin.adminhome', compact('matches'));
-    }
+    // public function match()
+    // {
+    //     $matches = MatchModel::all();
+    //     return view('admin.adminhome', compact('matches'));
+    // }
 }
