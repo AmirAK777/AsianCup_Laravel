@@ -16,7 +16,6 @@
                         <p><strong>Stadium:</strong> {{ $match->stade->name }}</p>
                         <p><strong>Team 1:</strong> {{ $match->team1->name }}</p>
                         <p><strong>Team 2:</strong> {{ $match->team2->name }}</p>
-                        <!-- Ajoutez d'autres détails du match ici -->
                     </div>
                 </div>
             </div>
@@ -26,17 +25,17 @@
                 {{ __('Details') }}
             </x-primary-button>
         </form>
-        <form action="{{ route('cart.create', ['id_match' => $match->id_match, 'billet_date' => $match->date]) }}" method="POST">
+        <form action="{{ route('cart.create') }}" method="POST">
             @csrf
+            <input type="hidden" name="id_match" value="{{ $match->id_match }}">
+            <input type="hidden" name="billet_date" value="{{ $match->date }}">
             <div class="row">
                 <div class="col-md-6 mb-3">
-                <input type="hidden" name="billet_date" value="{{ $match->date }}">
-                </div>
-                <div class="col-md-6 mb-3">
+                    <label for="quantity" class="form-label">Quantité :</label>
                     <input type="number" class="form-control" id="quantity" name="quantity" placeholder="ex: 1" min="0" value="{{ old('quantity') }}">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Beli Tiket</button>
+            <button type="submit" class="btn btn-primary">Acheter</button>
         </form>
     </div>
 </x-app-layout>

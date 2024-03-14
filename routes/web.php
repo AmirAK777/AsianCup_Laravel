@@ -8,7 +8,7 @@ use App\Http\Controllers\StadeController;
 use App\Http\Controllers\BilletController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\TicketController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TransactionController;
 
 
@@ -69,20 +69,20 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     // Member Routes
     // GET
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::get('/cart/{id}', [CartController::class, 'showForm'])->name('cart.form');
+    Route::get('/cart', [OrderController::class, 'index'])->name('cart.index');
+    Route::get('/cart/{id}', [OrderController::class, 'showForm'])->name('cart.form');
     Route::get('/history', [TransactionController::class, 'index'])->name('transaction.index');
     Route::get('/ticket', [TicketController::class, 'index'])->name('ticket.index');
     Route::get('/ticket/download/{id}', [TicketController::class, 'download'])->name('ticket.download');
     // POST
-    Route::post('/cart', [CartController::class, 'store'])->name('cart.create');
+    Route::post('/cart', [OrderController::class, 'store'])->name('cart.create');
     Route::post('/checkout',[TransactionController::class, 'store'])->name('transaction.create');
     // Route::post('/review', [TestimonyController::class, 'store'])->name('testimony.create');
     // PATCH
-    Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::put('/cart/{id}', [OrderController::class, 'update'])->name('cart.update');
     // Route::patch('/review/{id}', [TestimonyController::class, 'update'])->name('testimony.update');
     //DELETE
-    Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
+    Route::delete('/cart/{id}', [OrderController::class, 'delete'])->name('cart.delete');
 });
 
 Route::middleware('auth')->group(function () {
