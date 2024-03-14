@@ -7,8 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class Billet extends Model
 {
-    protected $table = 'billet';
-    protected $primaryKey = 'id_billet';
-    public $timestamps = false;
-    protected $fillable = ['id_match', 'category', 'price', 'availability'];
+    use HasFactory;
+
+    protected $primaryKey = 'billet_id ';
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'billet_id ',
+        'user_id',
+        'id_match',
+        'quantity',
+        'billet_date',
+        'status'
+    ];
+
+    protected $dates = [
+        'billet_date'
+    ];
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    public function item(){
+        return $this->belongsTo(MatchModel::class,'item_id','id');
+    }
 }

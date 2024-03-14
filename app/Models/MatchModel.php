@@ -16,7 +16,7 @@ class MatchModel extends Model
 
     public $timestamps = false; 
 
-    protected $fillable = ['name', 'date', 'id_stade', 'id_team1', 'id_team2']; 
+    protected $fillable = ['name', 'date', 'id_stade', 'id_team1', 'id_team2','price','status']; 
 
     public function stade(): BelongsTo
     {
