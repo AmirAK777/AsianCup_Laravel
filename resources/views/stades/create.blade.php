@@ -13,12 +13,17 @@
 
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                        <input type="text" name="name" id="name" class="form-input rounded-md shadow-sm mt-1 block w-full">
+                        <input type="text" name="name" id="name" class="form-input rounded-md shadow-sm mt-1 block w-full" required>
                     </div>
 
                     <div class="mb-4">
                         <label for="cty" class="block text-gray-700 text-sm font-bold mb-2">City:</label>
-                        <input type="text" name="cty" id="cty" class="form-input rounded-md shadow-sm mt-1 block w-full">
+                        <input type="text" name="cty" id="cty" class="form-input rounded-md shadow-sm mt-1 block w-full" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="image_stade" class="block text-gray-700 text-sm font-bold mb-2">URL de l'image :</label>
+                        <input type="url" name="image_stade" id="image_stade" class="form-input rounded-md shadow-sm mt-1 block w-full" required>
                     </div>
 
                     <div class="mb-4">
