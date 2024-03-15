@@ -38,9 +38,8 @@
                 {{ __('Details') }}
             </x-primary-button>
         </form>
-        <form action="{{ route('cart.create', ['id_match' => $match->id_match]) }}" method="POST" class="row mb-3">
+        <!-- <form action="{{ route('cart.create', ['id_match' => $match->id_match]) }}" method="POST" class="row mb-3">
             @csrf
-            <!-- Vos autres champs de formulaire ici -->
             <div class="col-md-6 mb-3">
                 <label for="billet_date" class="form-label">Tanggal</label>
                 <input type="date" class="form-control @error('billet_date') is-invalid @enderror" id="billet_date" name="billet_date" value={{now()}}>
@@ -70,6 +69,6 @@
                 </div>
                 @endif
             </div>
-        </form>
+        </form> -->
     </div>
 </div>

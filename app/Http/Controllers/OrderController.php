@@ -18,11 +18,11 @@ class OrderController extends Controller
         ]);
 
         $command = Command::firstOrNew([
-            'user_id' => Auth::id()
+            'user_id' => Auth::user()->id
         ]);
 
         $cartDetail = CommandDetail::updateOrCreate([
-            'command_id' => $command->id,
+            'command_id' => $command->user_id,
             'id_match' => $request->id_match,
             'billet_date' => $request->billet_date,
         ], [
