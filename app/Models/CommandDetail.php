@@ -16,7 +16,7 @@ class CommandDetail extends Model
     protected $dates = ['billet_date'];
     
     public function match(){
-        return $this->hasOne(MatchModel::class, 'id', 'id_match');
+        return $this->hasOne(MatchModel::class, 'id_match', 'id_match');
     }
 
     public function getTotalPriceAttribute(){

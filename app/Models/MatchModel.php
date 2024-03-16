@@ -32,4 +32,10 @@ class MatchModel extends Model
     {
         return $this->belongsTo(Team::class, 'id_team2', 'id_team');
     }
+
+    public function match(){
+        return $this->hasOne(MatchModel::class, 'id', 'id_match');
+    }
+
+
 }

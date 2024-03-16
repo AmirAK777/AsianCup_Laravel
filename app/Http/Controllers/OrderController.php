@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;;
@@ -22,12 +23,16 @@ class OrderController extends Controller
         ]);
 
         $cartDetail = CommandDetail::updateOrCreate([
-            'command_id' => $command->user_id,
+            'command_id' => $command->id,
             'id_match' => $request->id_match,
             'billet_date' => $request->billet_date,
         ], [
             'quantity' => $validatedData['quantity'],
         ]);
+
+        $command->save();
+
+        Log::channel('abuse')->info("Detail: " . $cartDetail);
 
         $status = $cartDetail->wasRecentlyCreated ? 'Berhasil menambahkan barang ke pesanan' : 'Pesanan berhasil diubah';
 
@@ -37,11 +42,13 @@ class OrderController extends Controller
 
     public function index()
     {
-        $cart = Command::firstOrNew([
+        $command = Command::firstOrNew([
             'user_id' => Auth::user()->id
         ]);
-        $carts = $cart->details;
-        return view('cart.index', compact('carts'));
+        Log::channel('abuse')->info("Command Detail: " . $command->details);
+
+        $commands = $command->details;
+        return view('cart.index', compact('commands'));
     }
 
     public function showForm($id)

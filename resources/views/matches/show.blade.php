@@ -53,16 +53,18 @@
 
                 <p><strong>Team 1:</strong> {{ $match->team1->club_name }}</p>
                 <p><strong>Team 2:</strong> {{ $match->team2->club_name }}</p>
-                <div class="flex py-4 space-x-4">
-                    <div class="col-md-6 mb-3">
-                        <label for="quantity" class="form-label">Quantité :</label>
-                        <input type="number" class="form-input rounded-md shadow-sm mt-1 block w-full" id="quantity" name="quantity" placeholder="ex: 1" min="0" value="{{ old('quantity') }}">
+                <form action="{{ route('cart.create') }}" method="POST" class="mt-4">
+                    @csrf
+                    <input type="hidden" name="id_match" value="{{ $match->id_match }}">
+                    <input type="hidden" name="billet_date" value="{{ $match->date }}">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="mb-3">
+                            <label for="quantity" class="block text-sm font-medium text-gray-700">Quantité :</label>
+                            <input type="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" id="quantity" name="quantity" placeholder="ex: 1" min="0" value="{{ old('quantity') }}">
+                        </div>
                     </div>
-
-                    <button type="button" class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white">
-                        Add to Cart
-                    </button>
-                </div>
+                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Acheter</button>
+                </form>
             </div>
         </div>
     </div>
