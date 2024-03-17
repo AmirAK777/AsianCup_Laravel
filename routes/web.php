@@ -72,8 +72,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart', [OrderController::class, 'index'])->name('cart.index');
     Route::get('/cart/{id}', [OrderController::class, 'showForm'])->name('cart.form');
     Route::get('/history', [TransactionController::class, 'index'])->name('transaction.index');
-    Route::get('/ticket', [TicketController::class, 'index'])->name('ticket.index');
-    Route::get('/ticket/download/{id}', [TicketController::class, 'download'])->name('ticket.download');
+    Route::get('/billet', [BilletController::class, 'index'])->name('billet.index');
+    Route::get('/billet/download/{id}', [BilletController::class, 'download'])->name('billet.download');
     // POST
     Route::post('/cart', [OrderController::class, 'store'])->name('cart.create');
     Route::post('/checkout',[TransactionController::class, 'store'])->name('transaction.create');

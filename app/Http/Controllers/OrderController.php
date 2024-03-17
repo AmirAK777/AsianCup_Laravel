@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;;
@@ -31,9 +30,6 @@ class OrderController extends Controller
         ]);
 
         $command->save();
-
-        Log::channel('abuse')->info("Detail: " . $cartDetail);
-
         $status = $cartDetail->wasRecentlyCreated ? 'Berhasil menambahkan barang ke pesanan' : 'Pesanan berhasil diubah';
 
         return redirect()->route('matches.show', ['id' => $request->id_match])->with('status', $status);
@@ -45,7 +41,6 @@ class OrderController extends Controller
         $command = Command::firstOrNew([
             'user_id' => Auth::user()->id
         ]);
-        Log::channel('abuse')->info("Command Detail: " . $command->details);
 
         $commands = $command->details;
         return view('cart.index', compact('commands'));

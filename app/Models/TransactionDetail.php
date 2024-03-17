@@ -13,11 +13,11 @@ class TransactionDetail extends Model
 
     protected $appends = ['total_price'];
 
-    public function item(){
-        return $this->hasOne(MatchModel::class, 'id', 'id_match')->withTrashed();
+    public function match(){
+        return $this->hasOne(MatchModel::class, 'id_match', 'id_match');
     }
 
     public function getTotalPriceAttribute(){
-        return $this->item->price * $this->quantity;
+        return $this->match->price * $this->quantity;
     }
 }

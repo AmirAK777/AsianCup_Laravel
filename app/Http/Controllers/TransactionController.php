@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Billet;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
+use Illuminate\Support\Facades\Log;
 
 class TransactionController extends Controller
 {
@@ -24,27 +26,32 @@ class TransactionController extends Controller
         $transaction = Transaction::create([
             'user_id' => Auth::user()->id
         ]);
-        $carts = Auth::user()->cart->details;
-        foreach($carts as $cart){
+
+
+        $commands = Auth::user()->command->details;
+
+        Log::channel('abuse')->info("tra: " .  $commands);
+
+        foreach($commands as $command){
             $transDetail = TransactionDetail::create([
                 'transaction_id' => $transaction->id,
-                'item_id' => $cart->item_id,
-                'billet_date' => $cart->billet_date,
-                'quantity' => $cart->quantity,
+                'id_match' => $command->id_match,
+                'billet_date' => $command->billet_date,
+                'quantity' => $command->quantity,
             ]);
-            $ticket = Ticket::create([
-                'ticket_id' => Str::random(12),
+            $billet = Billet::create([
+                'billet_id' => "Str::random(12)",
                 'user_id' => Auth::user()->id,
-                'id_match'=> $cart->item_id,
-                'billet_date' => $cart->billet_date,
-                'quantity' => $cart->quantity,
+                'id_match'=> $command->id_match,
+                'billet_date' => $command->billet_date,
+                'quantity' => $command->quantity,
                 'status' => true
             ]);
             if(!$transDetail){
                 $transaction->delete();
                 return redirect()->route('cart.detail')->with('fail','Pembayaran gagal');
             }else{
-                $cart->delete();
+                $command->delete();
             }
         }
         return redirect()->route('transaction.index')->with('success','Pembayaran berhasil!');

@@ -17,9 +17,11 @@ class CommandDetail extends Model
     
     public function match(){
         return $this->hasOne(MatchModel::class, 'id_match', 'id_match');
+        
     }
 
     public function getTotalPriceAttribute(){
         return $this->match->price * $this->quantity;
+        
     }
 }

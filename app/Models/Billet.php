@@ -31,7 +31,7 @@ class Billet extends Model
         return $this->belongsTo(User::class,'user_id','id');
     }
 
-    public function item(){
-        return $this->belongsTo(MatchModel::class,'item_id','id');
+    public function match(){
+        return $this->belongsTo(MatchModel::class,'id_match','id_match');
     }
 }
