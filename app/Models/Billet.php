@@ -9,7 +9,7 @@ class Billet extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'billet_id ';
+    protected $primaryKey = 'billet_id';
     protected $keyType = 'string';
 
     public $incrementing = false;
