@@ -1,26 +1,31 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Histori Transaksi
+            Historique des Transactions
         </h2>
     </x-slot>
 
-    <div class="container mx-auto py-12">
-        <div class="display-6 playfair fw-bold text-center mb-3">
-            Histori Transaksi
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-4">
+    <div class="flex flex-col justify-center items-center pt-4">
+        <div class="relative flex flex-col rounded-[10px] border-[1px] border-gray-200 w-[576px] mx-auto p-4 bg-white bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:!bg-navy-800  dark:shadow-none">
+            <div class="flex items-center justify-between rounded-t-3xl p-3 w-full">
+                <div class="text-lg font-bold text-navy-700">
+                    History
+                </div>
+                <button class="linear rounded-[20px] bg-lightPrimary px-4 py-2 text-base font-medium text-brand-500 transition duration-200 hover:bg-gray-100 active:bg-gray-200 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:active:bg-white/20">
+                    See all
+                </button>
+            </div>
             @if($transactions->count() > 0)
-                @foreach ($transactions as $transaction)
-                    <div class="col-md-6 mb-3">
-                        @include('components.transaction-card', [
-                            'transaction' => $transaction,
-                            'transaction_details' => $transaction->details
-                        ])
-                    </div>
-                @endforeach
+            @foreach ($transactions as $transaction)
+            @include('components.transaction-card', [
+            'transaction' => $transaction,
+            'transaction_details' => $transaction->details
+            ])
+            @endforeach
             @else
-                <h5 class="text-muted text-center">Belum ada histori transaksi.</h5>
+            <div class="col-span-full text-center">
+                <h5 class="text-gray-600">Aucun historique de transaction disponible.</h5>
+            </div>
             @endif
         </div>
     </div>

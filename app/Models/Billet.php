@@ -15,7 +15,7 @@ class Billet extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'billet_id ',
+        'billet_id',
         'user_id',
         'id_match',
         'quantity',

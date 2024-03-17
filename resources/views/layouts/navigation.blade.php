@@ -25,6 +25,21 @@
                         Support Ticket
                     </a>
                 </div>
+                <div class="flex flex-col justify-center">
+                    <a href="{{ route('transaction.index') }}" class="ml-3 text-gray-400">
+                        Historique
+                    </a>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <a href="{{ route('billet.index') }}" class="ml-3 text-gray-400">
+                        Mes Billes
+                    </a>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <a href="{{ route('cart.index') }}" class="ml-3 text-gray-400">
+                        Pannier
+                    </a>
+                </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">

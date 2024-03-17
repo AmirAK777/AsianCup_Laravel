@@ -15,7 +15,10 @@ class TransactionController extends Controller
 {
     public function index(){
         $transactions = Auth::user()->transactions;
+        Log::channel('abuse')->info("tra: " .  $transactions );
+
         return view('transaction.index', compact('transactions'));
+
     }
 
     public function store(Request $request){
@@ -30,7 +33,6 @@ class TransactionController extends Controller
 
         $commands = Auth::user()->command->details;
 
-        Log::channel('abuse')->info("tra: " .  $commands);
 
         foreach($commands as $command){
             $transDetail = TransactionDetail::create([
@@ -40,13 +42,15 @@ class TransactionController extends Controller
                 'quantity' => $command->quantity,
             ]);
             $billet = Billet::create([
-                'billet_id' => "Str::random(12)",
+                'billet_id' => Str::uuid(),
                 'user_id' => Auth::user()->id,
                 'id_match'=> $command->id_match,
                 'billet_date' => $command->billet_date,
                 'quantity' => $command->quantity,
                 'status' => true
             ]);
+
+
             if(!$transDetail){
                 $transaction->delete();
                 return redirect()->route('cart.detail')->with('fail','Pembayaran gagal');

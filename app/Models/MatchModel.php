@@ -34,7 +34,7 @@ class MatchModel extends Model
     }
 
     public function match(){
-        return $this->hasOne(MatchModel::class, 'id', 'id_match');
+        return $this->hasOne(MatchModel::class, 'id_match', 'id_match');
     }
 
 
