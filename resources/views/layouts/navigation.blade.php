@@ -33,7 +33,6 @@
                 <div class="flex flex-col justify-center">
                     <a href="{{ route('billet.index') }}" class="ml-3 text-gray-400">
                         Mes Billets
-                        Mes Billets
                     </a>
                 </div>
                 <div class="flex flex-row justify-center">
