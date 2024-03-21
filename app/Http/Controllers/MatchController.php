@@ -26,13 +26,15 @@ class MatchController extends Controller
             'team1_id' => [
                 'required',
                 'exists:teams,id_team',
-                Rule::notIn([$request->team2_id]), // Vérifie que team1_id n'est pas identique à team2_id
+                Rule::notIn([$request->team2_id]),
             ],
             'team2_id' => [
                 'required',
                 'exists:teams,id_team',
-                Rule::notIn([$request->team1_id]), // Vérifie que team2_id n'est pas identique à team1_id
-            ]
+                Rule::notIn([$request->team1_id]),
+            ],
+            'price' => 'required|numeric|min:0',
+
         ]);
 
         MatchModel::create([
@@ -41,8 +43,17 @@ class MatchController extends Controller
             'id_stade' => $request->stade_id,
             'id_team1' => $request->team1_id,
             'id_team2' => $request->team2_id,
+            'price' => $request->price,
+            'status' => $request->status,
+
         ]);
 
         return redirect()->route('matches.create')->with('success', 'Match created successfully.');
+    }
+
+    public function show($id)
+    {
+        $match = MatchModel::findOrFail($id);
+        return view('matches.show', compact('match'));
     }
 }

@@ -1,37 +1,31 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Log;
 
-use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Billet;
-use App\Models\MatchModel;
 
 class BilletController extends Controller
 {
-    public function create()
-    {
-        $matches = MatchModel::all();
-        return view('billets.create', compact('matches'));
+    public function index(){
+        $billets = Auth::user()->billets;
+        Log::channel('abuse')->info("billet: " .  $billets);
+
+        return view('billet.index', compact('billets'));
     }
- public function store(Request $request)
-    {
-        $request->validate([
-            'id_match' => 'required|exists:match,id_match',
-            'category' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-            'availability' => 'required|boolean',
-            'quantity' => 'required|integer|min:1', 
+
+    public function download($id){
+        $billet = Billet::findOrFail($id);
+
+        $pdf = Pdf::loadView('billet.billet', [
+            'billet' => $billet,
+            'user' => $billet->user,
+            'match' => $billet->match,
         ]);
 
-        for ($i = 0; $i < $request->quantity; $i++) {
-            Billet::create([
-                'id_match' => $request->id_match,
-                'category' => $request->category,
-                'price' => $request->price,
-                'availability' => $request->availability,
-            ]);
-        }
-
-        return redirect()->route('billets.create')->with('success', 'Les billets ont été créés avec succès.');
+        return $pdf->download("billet_".$id.".pdf");
     }
 }

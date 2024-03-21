@@ -16,7 +16,7 @@ class MatchModel extends Model
 
     public $timestamps = false; 
 
-    protected $fillable = ['name', 'date', 'id_stade', 'id_team1', 'id_team2']; 
+    protected $fillable = ['name', 'date', 'id_stade', 'id_team1', 'id_team2','price','status']; 
 
     public function stade(): BelongsTo
     {
@@ -32,4 +32,10 @@ class MatchModel extends Model
     {
         return $this->belongsTo(Team::class, 'id_team2', 'id_team');
     }
+
+    public function match(){
+        return $this->hasOne(MatchModel::class, 'id_match', 'id_match');
+    }
+
+
 }

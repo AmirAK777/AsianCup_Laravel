@@ -9,9 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
                 @if(session('success'))
-                    <div class="mb-4 text-green-600">
-                        {{ session('success') }}
-                    </div>
+                <div class="mb-4 text-green-600">
+                    {{ session('success') }}
+                </div>
                 @endif
 
                 <form action="{{ route('matches.store') }}" method="POST">
@@ -23,6 +23,17 @@
                     <div class="mb-4">
                         <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Match Date:</label>
                         <input type="date" name="date" id="date" class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                    </div>
+                    <div class="mb-4">
+                        <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Prix:</label>
+                        <input type="number" name="price" id="price" class="form-input rounded-md shadow-sm mt-1 block w-full">
+                    </div>
+                    <div class="mb-4">
+                        <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Statut:</label>
+                        <select name="status" id="status" class="form-select rounded-md shadow-sm mt-1 block w-full">
+                            <option value="1">Actif</option>
+                            <option value="0">Inactif</option>
+                        </select>
                     </div>
                     <div class="mb-4">
                         <label for="stade" class="block text-gray-700 text-sm font-bold mb-2">Stadium:</label>
