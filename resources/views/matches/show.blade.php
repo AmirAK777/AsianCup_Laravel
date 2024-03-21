@@ -73,11 +73,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="category" class="block text-sm font-medium text-gray-700">Catégorie :</label>
-                            <select id="category" name="category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                                <option value="1">Catégorie 1</option>
-                                <option value="2">Catégorie 2</option>
-                                <option value="3">Catégorie 3</option>
-                                <option value="4">Catégorie 4</option>
+                            <select id="category" name="category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
                             </select>
                         </div>
                     </div>

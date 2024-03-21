@@ -20,7 +20,8 @@ class Billet extends Model
         'id_match',
         'quantity',
         'billet_date',
-        'status'
+        'status',
+        'category'
     ];
 
     protected $dates = [
