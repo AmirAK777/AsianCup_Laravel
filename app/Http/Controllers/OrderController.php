@@ -17,9 +17,7 @@ class OrderController extends Controller
             'quantity' => 'required|integer|min:1',
         ]);
 
-        $command = Command::firstOrNew([
-            'user_id' => Auth::user()->id
-        ]);
+        $command = Command::firstOrCreate(['user_id' => Auth::user()->id]);
 
         $cartDetail = CommandDetail::updateOrCreate([
             'command_id' => $command->id,

@@ -1,8 +1,10 @@
 <div class="flex h-full w-full items-start justify-between rounded-md border-[1px] border-[transparent] dark:hover:border-white/20 bg-white px-3 py-[20px] transition-all duration-150 hover:border-gray-200 dark:!bg-navy-800 dark:hover:!bg-navy-700">
     <div class="flex items-center gap-3">
+
         <div class="flex h-16 w-16 items-center justify-center">
-            <img class="h-full w-full rounded-xl" src="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/media/Nft6.9ff5403226e81a6fd390.png" alt="" />
+            <img class="h-full w-full rounded-xl object-cover" src="https://www.creativefabrica.com/wp-content/uploads/2022/01/09/ticket-icon-template-Graphics-23210275-1-1-580x387.jpg" alt="" />
         </div>
+
         <div class="flex flex-col">
             @foreach ($transaction_details as $td)
             <h5 class="text-lg font-bold text-black">
