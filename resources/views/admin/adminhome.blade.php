@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="mt-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                     @foreach ($matches as $match)
                     <x-match-card :team1="$match->team1" :team2="$match->team2" :match="$match" :stade="$match->stade" :image="$match->stade->image_stade"/>
 

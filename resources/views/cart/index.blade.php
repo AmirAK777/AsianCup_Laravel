@@ -7,7 +7,7 @@
 
     <div class="container mx-auto py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="overflow-y-auto max-h-[85vh]">
+            <div class=" overflow-y-auto max-h-[85vh]">
                 @foreach ($commands as $command)
                 @include('components.cart-card', array(
                 'command' => $command,

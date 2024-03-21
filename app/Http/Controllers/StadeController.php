@@ -17,14 +17,14 @@ class StadeController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'cty' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
             'graph_image' => 'required|url',
-            'emplacement' => 'required|string|max:255',
         ]);
 
         Stade::create([
             'name' => $request->name,
             'cty' => $request->cty,
-            'emplacement' => $request->emplacement,
+            'location' => $request->location,
             'graph_image' => $request->graph_image,
         ]);
 

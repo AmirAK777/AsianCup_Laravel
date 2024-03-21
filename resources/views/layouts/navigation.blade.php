@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <x-application-logo class="block h-9 w-9 sm:h-12 sm:w-12 fill-current text-gray-800" />
                     </a>
                 </div>
 
@@ -20,10 +20,10 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <div class="flex flex-col justify-center">
+                <div class="flex flex-row justify-center">
+
                     <a href="{{ route('ticket.index') }}" class="ml-3 text-gray-400">
-                        Support Ticket
-                    </a>
+                        Service client </a>
                 </div>
                 <div class="flex flex-col justify-center">
                     <a href="{{ route('transaction.index') }}" class="ml-3 text-gray-400">
@@ -32,13 +32,15 @@
                 </div>
                 <div class="flex flex-col justify-center">
                     <a href="{{ route('billet.index') }}" class="ml-3 text-gray-400">
-                        Mes Billes
+                        Mes Billets
                     </a>
                 </div>
-                <div class="flex flex-col justify-center">
+                <div class="flex flex-row justify-center">
                     <a href="{{ route('cart.index') }}" class="ml-3 text-gray-400">
-                        Pannier
+                        Panier
+
                     </a>
+
                 </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">

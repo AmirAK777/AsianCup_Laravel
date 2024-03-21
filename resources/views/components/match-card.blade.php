@@ -27,7 +27,7 @@
                 <span class="text-gray-700">{{ $match->date }}, {{ $match->time }}</span>
             </li>
             <li class="mb-4 flex items-center">
-                <img src="https://www.ticketkosta.com/images/location.svg" alt="Emplacement" class="h-6 inline-block align-middle mr-2">
+                <img src="https://www.ticketkosta.com/images/location.svg" alt="location" class="h-6 inline-block align-middle mr-2">
                 <span class="text-gray-700">{{ $match->stade->name }}</span>
             </li>
         </ul>
