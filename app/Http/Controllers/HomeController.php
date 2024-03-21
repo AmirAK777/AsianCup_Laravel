@@ -15,7 +15,8 @@ class HomeController extends Controller
         if (Auth::id()) {
             $usertype = Auth()->user()->usertype;
             if ($usertype == 'user') {
-                return view('dashboard');
+                $matches = MatchModel::all();
+                return view('dashboard', compact('matches'));
             } else if ($usertype == 'admin') {
                 $matches = MatchModel::all();
                 return view('admin.adminhome', compact('matches'));

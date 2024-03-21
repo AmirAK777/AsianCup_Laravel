@@ -60,6 +60,13 @@
                         </select>
                     </div>
                     <div class="mb-4">
+                        <label for="match_image" class="block font-medium text-sm text-gray-700">URL de l'image :</label>
+                        <input type="url" id="match_image" name="match_image" value="{{ old('match_image') }}" required class="form-input rounded-md shadow-sm mt-1 block w-full">
+                        @error('match_image')
+                        <div class="text-red-500 mt-2 text-sm">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
                         <x-primary-button type="submit">
                             {{ __('Create') }}
                         </x-primary-button>
