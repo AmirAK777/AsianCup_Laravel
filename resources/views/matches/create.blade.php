@@ -22,7 +22,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Match Date:</label>
-                        <input type="date" name="date" id="date" class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                        <input type="datetime-local" name="date" id="date" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                     </div>
                     <div class="mb-4">
                         <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Prix:</label>

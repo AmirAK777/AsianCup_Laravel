@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
+                    <a href="/">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
@@ -32,12 +32,12 @@
                 </div>
                 <div class="flex flex-col justify-center">
                     <a href="{{ route('billet.index') }}" class="ml-3 text-gray-400">
-                        Mes Billes
+                        Mes Billets
                     </a>
                 </div>
                 <div class="flex flex-col justify-center">
                     <a href="{{ route('cart.index') }}" class="ml-3 text-gray-400">
-                        Pannier
+                        Panier
                     </a>
                 </div>
                 <x-dropdown align="right" width="48">
