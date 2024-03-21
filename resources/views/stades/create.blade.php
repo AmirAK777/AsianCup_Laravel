@@ -20,7 +20,10 @@
                         <label for="cty" class="block text-gray-700 text-sm font-bold mb-2">City:</label>
                         <input type="text" name="cty" id="cty" class="form-input rounded-md shadow-sm mt-1 block w-full">
                     </div>
-
+                    <div class="mb-4">
+                        <label for="graph_image" class="block text-gray-700 text-sm font-bold mb-2">Graphe du Stade :</label>
+                        <input type="text" name="graph_image" id="graph_image" class="form-input rounded-md shadow-sm mt-1 block w-full">
+                    </div>
                     <div class="mb-4">
                         <x-primary-button type="submit">
                             {{ __('Create') }}

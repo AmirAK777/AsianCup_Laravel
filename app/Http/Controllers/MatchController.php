@@ -34,6 +34,7 @@ class MatchController extends Controller
                 Rule::notIn([$request->team1_id]),
             ],
             'price' => 'required|numeric|min:0',
+            'match_image' => 'required|url',
 
         ]);
 
@@ -45,6 +46,7 @@ class MatchController extends Controller
             'id_team2' => $request->team2_id,
             'price' => $request->price,
             'status' => $request->status,
+            'match_image' => $request->match_image,
 
         ]);
 
