@@ -18,12 +18,13 @@ class StadeController extends Controller
             'name' => 'required|string|max:255',
             'cty' => 'required|string|max:255',
             'graph_image' => 'required|url',
-
+            'emplacement' => 'required|string|max:255',
         ]);
 
         Stade::create([
             'name' => $request->name,
             'cty' => $request->cty,
+            'emplacement' => $request->emplacement,
             'graph_image' => $request->graph_image,
         ]);
 
