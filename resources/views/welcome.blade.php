@@ -363,18 +363,9 @@ function carousel() {
         link: "https://visitqatar.com/fr-fr/highlights/iconic-places/msheireb-downtown"
       },
     ],
-    autoTransition: null, // Variable pour stocker l'intervalle de transition automatique
+    //autoTransition: null, // Variable pour stocker l'intervalle de transition automatique
     init() {
-      this.startAutoTransition();
-    },
-    startAutoTransition() {
-      // Nettoie l'intervalle existant pour éviter les doublons
-      this.clearAutoTransition();
-
-      // Démarre un nouvel intervalle
-      this.autoTransition = setInterval(() => {
-        this.next();
-      }, 5000); // Changez la diapositive toutes les 5 secondes
+      //this.startAutoTransition();
     },
     clearAutoTransition() {
       // Nettoie l'intervalle si celui-ci existe
