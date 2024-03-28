@@ -35,10 +35,14 @@
                         Mes Billets
                     </a>
                 </div>
+                <div class="flex flex-col justify-center">
+                    <a href="{{ route('billets.sellable') }}" class="ml-3 text-gray-400">
+                        Billets en vente
+                     </a>
+                </div>
                 <div class="flex flex-row justify-center">
                     <a href="{{ route('cart.index') }}" class="ml-3 text-gray-400">
                         Panier
-
                     </a>
 
                 </div>

@@ -15,4 +15,8 @@ class Command extends Model
     public function details(){
         return $this->hasMany(CommandDetail::class);
     }
+
+    public function detailsSell(){
+        return $this->hasMany(CommandSellDetail::class);
+    }
 }

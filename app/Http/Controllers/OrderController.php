@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;;
 use App\Http\Requests\CommandRequest;
 use App\Models\Command;
 use App\Models\CommandDetail;
+use App\Models\CommandSellDetail;
+
 use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
@@ -36,6 +38,31 @@ class OrderController extends Controller
         return redirect()->route('matches.show', ['id' => $request->id_match])->with('status', $status);
     }
 
+    public function storeBillet(Request $request)
+    {
+        $validatedData = $request->validate([
+            'quantity' => 'required|integer|min:1',
+            'billet_id' => 'required',
+            'billet_date' => 'required|date',
+        ]);
+
+        $command = Command::firstOrCreate(['user_id' => Auth::user()->id]);
+
+        $cartDetailBillet = CommandSellDetail::updateOrCreate([
+            'command_id' => $command->id,
+            'billet_id' => $request->billet_id,
+        ], [
+            'quantity' => $validatedData['quantity'],
+            'category' => $validatedData['category'],
+            'billet_date' => $validatedData['billet_date'],
+        ]);
+
+        $command->save();
+
+        $status = $cartDetailBillet->wasRecentlyCreated ? 'Successfully added item(s) to the order' : 'Order successfully updated';
+
+        return redirect()->route('matches.show', ['id' => $request->id_match])->with('status', $status);
+    }
 
     public function index()
     {
@@ -43,7 +70,13 @@ class OrderController extends Controller
             'user_id' => Auth::user()->id
         ]);
 
-        $commands = $command->details;
+
+        $matchDetails = $command->detailsSell;
+
+        $ticketDetails = $command->details;
+
+        $commands = $matchDetails->merge($ticketDetails);
+      
         return view('cart.index', compact('commands'));
     }
 
@@ -72,6 +105,17 @@ class OrderController extends Controller
     public function delete($id)
     {
         $cart = CommandDetail::findOrFail($id);
+
+        if ($cart->delete())
+            return redirect()->route('cart.index')->with('success', 'Berhasil menghapus keranjang');
+
+        else
+            return redirect()->route('cart.index')->with('fail', 'Gagal menghapus keranjang');
+    }
+
+    public function deleteSell($id)
+    {
+        $cart = CommandSellDetail::findOrFail($id);
 
         if ($cart->delete())
             return redirect()->route('cart.index')->with('success', 'Berhasil menghapus keranjang');

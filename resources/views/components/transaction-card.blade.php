@@ -7,16 +7,41 @@
 
         <div class="flex flex-col">
             @foreach ($transaction_details as $td)
+            @if ($td->match)
             <h5 class="text-lg font-bold text-black">
-                {{$td->match->name}}
+                <p>Achat de billet</p>
+
             </h5>
             <p class="mt-1 text-sm font-normal text-gray-600">
-                <span>{{$td->quantity}}</span>x<span>{{number_format($td->match->price,0,',','.')}}</span>
+                Nom du match : {{$td->match->name}}
+            </p>
+            <p class="mt-1 text-sm font-normal text-gray-600">
+                Quantité : <span>{{$td->quantity}}</span>x<span>{{number_format($td->match->price, 0, ',', '.')}}</span>
             </p>
             <p class="mt-1 text-sm font-normal text-gray-600">
                 {{$td->match->stade->name}}
             </p>
 
+            @else
+            <!-- Si l'ID de match est nul -->
+            <h5 class="text-lg font-bold text-black">
+                <p>Rachat de billet</p>
+            </h5>
+            <p class="mt-1 text-sm font-normal text-gray-600">
+                Rachat</p>
+            <p class="mt-1 text-sm font-normal text-gray-600">
+                Numro:{{$td->id}}</p>
+            <p class="mt-1 text-sm font-normal text-gray-600">
+                Le Nom du Match: {{$td->billet->match->name}}</p>
+            <p class="mt-1 text-sm font-normal text-gray-600">
+                Quantité: {{$td->quantity}}</p>
+            <p class="mt-1 text-sm font-normal text-gray-600">
+                ID Billet: {{$td->billet_id}}</p>
+            <p class="mt-1 text-sm font-normal text-gray-600">
+                Prix du Match: {{ number_format($td->billet->match->price, 0, ',', '.') }}</p>
+            <p class="mt-1 text-sm font-normal text-gray-600">
+                ID Category: {{$td->category}}</p>
+            @endif
             @endforeach
         </div>
     </div>
