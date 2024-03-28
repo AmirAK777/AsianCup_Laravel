@@ -21,6 +21,16 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+    - name: Install NVM
+      run: |
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+    - name: Use Node.js 21 with NVM
+      run: |
+        source ~/.nvm/nvm.sh
+        nvm install 21
+        nvm use 21
+
     - name: Deploy code to server
       run: |
         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'cd ${{ secrets.LARAVEL_APP_PATH }} && git pull origin main && composer install --no-dev && php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && npm install && npm run build'
