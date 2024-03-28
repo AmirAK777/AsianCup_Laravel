@@ -27,7 +27,7 @@ jobs:
 
     - name: Build Npm
       run: |
-        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'cd ${{ secrets.LARAVEL_APP_PATH }} && ./npmready.sh'
+        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'cd ${{ secrets.LARAVEL_APP_PATH }} && export NVM_DIR=~/.nvm && source ~/.nvm/nvm.sh && ./npmready.sh'
 
     - name: Run custom script
       run: |
