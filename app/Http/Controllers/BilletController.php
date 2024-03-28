@@ -12,8 +12,6 @@ class BilletController extends Controller
 {
     public function index(){
         $billets = Auth::user()->billets;
-        Log::channel('abuse')->info("billet: " .  $billets);
-
         return view('billet.index', compact('billets'));
     }
 

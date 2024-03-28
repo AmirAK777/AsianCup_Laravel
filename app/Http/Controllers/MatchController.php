@@ -7,6 +7,8 @@ use App\Models\MatchModel;
 use App\Models\Stade;
 use Illuminate\Validation\Rule;
 use App\Models\Team;
+use App\Models\Billet;
+use Illuminate\Support\Facades\Log;
 
 class MatchController extends Controller
 {
@@ -56,6 +58,19 @@ class MatchController extends Controller
     public function show($id)
     {
         $match = MatchModel::findOrFail($id);
-        return view('matches.show', compact('match'));
+        $match = MatchModel::find($id);
+        $stade = $match->stade; // Récupérer les détails du stade pour le match
+
+        // Récupérez le nombre total de places disponibles dans le stade
+        $totalPlaces = $stade->places;
+
+        // Récupérez le nombre total de billets vendus pour ce match dans ce stade
+        $totalBilletsVendus = Billet::where('id_match', $id)->sum('quantity');
+
+        // Calculez le nombre de billets restants
+
+    
+        $billetsRestants = $totalPlaces - $totalBilletsVendus;
+        return view('matches.show', compact('match','billetsRestants'));
     }
 }

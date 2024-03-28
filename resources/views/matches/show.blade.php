@@ -57,11 +57,22 @@
                 <div class="flex items-center space-x-4 my-4">
                     <div>
                         <div class="rounded-lg bg-gray-100 flex py-2 px-3">
-                            <span class="text-indigo-400 mr-1 mt-1">$</span>
+                            <span class="text-indigo-400 mr-1 mt-1">€</span>
                             <span class="font-bold text-indigo-600 text-3xl">{{ $match->price}}</span>
                         </div>
+                        
                     </div>
                 </div>
+                <div class="flex items-center space-x-4 my-4">
+                    <div>
+                        <div class="rounded-lg bg-gray-100 flex py-2 px-3">
+                            <span class="text-indigo-400 mr-1 mt-1">Nombre de billet restant : </span>
+                            <span class="font-bold text-indigo-600 text-3xl">{{ $billetsRestants}}</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                @if($billetsRestants > 0)
                 <form action="{{ route('cart.create') }}" method="POST" class="mt-4">
                     @csrf
                     <input type="hidden" name="id_match" value="{{ $match->id_match }}">
@@ -83,6 +94,9 @@
                     </div>
                     <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Acheter</button>
                 </form>
+                @else
+                <p>Désolé, il n'y a plus de billets disponibles pour ce match.</p>
+                @endif
             </div>
         </div>
     </div>
