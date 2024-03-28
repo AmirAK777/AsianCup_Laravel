@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;;
 use App\Http\Requests\CommandRequest;
 use App\Models\Command;
 use App\Models\CommandDetail;
+use App\Mail\OrderConfirmation;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -30,6 +32,11 @@ class OrderController extends Controller
         ]);
 
         $command->save();
+        
+
+        $command->load('user', 'match');
+        Mail::to($command->user->email)->send(new OrderConfirmation($command));
+
         $status = $cartDetail->wasRecentlyCreated ? 'Berhasil menambahkan barang ke pesanan' : 'Pesanan berhasil diubah';
 
         return redirect()->route('matches.show', ['id' => $request->id_match])->with('status', $status);
@@ -78,4 +85,12 @@ class OrderController extends Controller
         else
             return redirect()->route('cart.index')->with('fail', 'Gagal menghapus keranjang');
     }
+
+    // App\Models\Command
+
+public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+
 }

@@ -124,7 +124,7 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             var qrcode = new QRCode(document.getElementById("qrcode"), {
-                text: "https://lien-vers-votre-site.com/billet?id={{$billet->billet_id}}",
+                text: "https://www.the-afc.com/en/national/afc_asian_cup/home.html",
                 width: 128,
                 height: 128,
                 colorDark: "#000000",

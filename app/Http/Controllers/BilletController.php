@@ -22,7 +22,7 @@ class BilletController extends Controller
         $billet = Billet::findOrFail($id);
     
         // Créer l'URL pour le QR Code
-        $qrCodeText = "https://votre-site.com/billet/".$billet->id;
+        $qrCodeText = "https://www.the-afc.com/en/national/afc_asian_cup/home.html".$billet->id;
         $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($qrCodeText);
     
         // Télécharge l'image QR Code
