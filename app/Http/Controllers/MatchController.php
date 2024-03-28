@@ -71,6 +71,6 @@ class MatchController extends Controller
 
     
         $billetsRestants = $totalPlaces - $totalBilletsVendus;
-        return view('matches.show', compact('match','billetsRestants'));
+        return view('matches.show', compact('match', 'billetsRestants', 'totalPlaces'));
     }
 }

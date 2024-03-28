@@ -31,7 +31,7 @@ class OrderController extends Controller
         ]);
 
         $command->save();
-        $status = $cartDetail->wasRecentlyCreated ? 'Successfully added item(s) to the order' : 'Order successfully updated';
+        $status = $cartDetail->wasRecentlyCreated ? 'Le billet à bien été ajouté dans votre panier !' : 'Order successfully updated';
 
         return redirect()->route('matches.show', ['id' => $request->id_match])->with('status', $status);
     }
