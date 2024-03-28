@@ -31,6 +31,12 @@ jobs:
         nvm install 21
         nvm use 21
 
+    - name: Add npm directory to PATH
+      run: echo 'export PATH="$HOME/.nvm/versions/node/v21.*/bin:$PATH"' >> ~/.bashrc
+
+    - name: Refresh bash
+      run: source ~/.bashrc
+
     - name: Deploy code to server
       run: |
         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'cd ${{ secrets.LARAVEL_APP_PATH }} && git pull origin main && composer install --no-dev && php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && npm install && npm run build'
