@@ -31,11 +31,9 @@ jobs:
         nvm install 21
         nvm use 21
 
-    - name: Add npm directory to PATH
-      run: echo 'export PATH="$HOME/.nvm/versions/node/v21.*/bin:$PATH"' >> ~/.bashrc
-
-    - name: Refresh bash
-      run: source ~/.bashrc
+    - name: Install npm
+      run: |
+        npm install -g npm@latest
 
     - name: Deploy code to server
       run: |
