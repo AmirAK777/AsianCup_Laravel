@@ -15,7 +15,6 @@ class TransactionController extends Controller
 {
     public function index(){
         $transactions = Auth::user()->transactions;
-        Log::channel('abuse')->info("tra: " .  $transactions );
 
         return view('transaction.index', compact('transactions'));
 

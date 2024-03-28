@@ -35,6 +35,10 @@
                         <input type="text" name="graph_image" id="graph_image" class="form-input rounded-md shadow-sm mt-1 block w-full">
                     </div>
                     <div class="mb-4">
+                        <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Nombre de places:</label>
+                        <input type="number" name="place" id="place" class="form-input rounded-md shadow-sm mt-1 block w-full">
+                    </div>
+                    <div class="mb-4">
                         <x-primary-button type="submit">
                             {{ __('Create') }}
                         </x-primary-button>

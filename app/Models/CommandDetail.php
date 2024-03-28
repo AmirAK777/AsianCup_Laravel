@@ -27,12 +27,7 @@ class CommandDetail extends Model
     {
         $test = ($this->match->price * $this->category) * $this->quantity;
 
-        Log::channel('abuse')->info('Total Price Calculation', [
-            'test' => $test,
-            'category' => $this->category,
-            'quantity' => $this->quantity
-        ]);
-        
+    
         return $test;
     }
 }

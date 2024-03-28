@@ -12,6 +12,6 @@ class Stade extends Model
 
     protected $table = 'stades'; 
 
-    protected $fillable = ['name', 'cty','graph_image', 'location']; 
+    protected $fillable = ['name', 'cty','graph_image', 'location','places']; 
 
 }

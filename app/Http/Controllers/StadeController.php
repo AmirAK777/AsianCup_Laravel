@@ -19,6 +19,8 @@ class StadeController extends Controller
             'cty' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'graph_image' => 'required|url',
+            'place' => 'required|numeric|min:0',
+
         ]);
 
         Stade::create([
@@ -26,6 +28,8 @@ class StadeController extends Controller
             'cty' => $request->cty,
             'location' => $request->location,
             'graph_image' => $request->graph_image,
+            'place' => $request->place,
+
         ]);
 
         return redirect()->route('stades.create')->with('success', 'Stade created successfully.');

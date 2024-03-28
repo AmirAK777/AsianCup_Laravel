@@ -29,7 +29,6 @@ class OrderController extends Controller
         ], [
             'quantity' => $validatedData['quantity'],
         ]);
-        Log::channel('abuse')->info($cartDetail);
 
         $command->save();
         $status = $cartDetail->wasRecentlyCreated ? 'Successfully added item(s) to the order' : 'Order successfully updated';
