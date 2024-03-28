@@ -21,16 +21,22 @@
                     <h2 class="text-2xl font-semibold mb-4">Détails du paiement</h2>
                     <div class="space-y-2">
                         @foreach ($commands as $command)
-                        <div class="flex justify-between">
-                            <div>{{$command->match->name}}</div>
-                            <div><span>{{$command->quantity}}</span>x<span>{{number_format($command->match->price,0,',','.')}}</span></div>
+                        <div class="article">
+                            <div class="flex justify-between">
+                                <div>{{ $command->match->name }}</div>
+                                <div>
+                                    <div>Prix billet unité : {{ number_format($command->match->price, 0, ',', '.') }} €</div>
+                                    <div>La catégorie choisie : {{$command->category}} est de {{ number_format($command->match->price * $command->category, 0, ',', '.') }} €</div>
+                                    <div>Nombre de billets : {{$command->quantity}}</div>
+                                </div>
+                            </div>
                         </div>
                         @endforeach
                     </div>
                     <hr class="my-4">
                     <div class="flex justify-between">
                         <h4 class="font-semibold">Sous-total</h4>
-                        <span class="font-semibold">EURO {{ number_format($commands->sum(function($command) { return $command->match->price * $command->quantity; }), 0, ',', '.') }}</span>
+                        <span class="font-semibold">{{ number_format($commands->sum(function($command) { return $command->match->price * $command->category * $command->quantity; }), 0, ',', '.') }} € </span>
                     </div>
                     <form action="{{route('transaction.create')}}" method="POST" class="mt-6">
                         @csrf

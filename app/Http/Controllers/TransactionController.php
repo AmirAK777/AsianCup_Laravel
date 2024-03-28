@@ -40,6 +40,8 @@ class TransactionController extends Controller
                 'id_match' => $command->id_match,
                 'billet_date' => $command->billet_date,
                 'quantity' => $command->quantity,
+                'category' => $command->category,
+
             ]);
             $billet = Billet::create([
                 'billet_id' => Str::uuid(),
@@ -47,6 +49,7 @@ class TransactionController extends Controller
                 'id_match'=> $command->id_match,
                 'billet_date' => $command->billet_date,
                 'quantity' => $command->quantity,
+                'category' => $command->category,
                 'status' => true
             ]);
 

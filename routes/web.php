@@ -41,8 +41,10 @@ Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name(
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/matches/create', [MatchController::class, 'create'])->name('matches.create');
     Route::post('/matches', [MatchController::class, 'store'])->name('matches.store');
-    Route::get('/matches/{id}', [MatchController::class, 'show'])->name('matches.show');
+});
 
+Route::middleware('auth')->group(function () {
+    Route::get('/matches/{id}', [MatchController::class, 'show'])->name('matches.show');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -76,7 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/billet/download/{id}', [BilletController::class, 'download'])->name('billet.download');
     // POST
     Route::post('/cart', [OrderController::class, 'store'])->name('cart.create');
-    Route::post('/checkout',[TransactionController::class, 'store'])->name('transaction.create');
+    Route::post('/checkout', [TransactionController::class, 'store'])->name('transaction.create');
     // Route::post('/review', [TestimonyController::class, 'store'])->name('testimony.create');
     // PATCH
     Route::put('/cart/{id}', [OrderController::class, 'update'])->name('cart.update');

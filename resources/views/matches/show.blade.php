@@ -39,17 +39,20 @@
                 </div>
             </div>
             <div class="md:flex-1 px-4">
-            <div class="flex justify-between items-center mb-6">
+                <div class="flex justify-between items-center mb-6">
                     <img src="{{ $match->team1->club_image}}" alt="Benfica" class="h-20">
                     <div class="text-center">
-                        <h1 class="text-4xl font-bold text-gray-800 mb-2">{{ $match->team1->club_name }} vs {{ $match->team2->club_name }}</h1>
-                        <p class="text-lg text-gray-600">Groupe D</p>
+                        <h1 class="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center">
+                            <span>{{ $match->team1->club_name }}</span>
+                            <span class="text-gray-600 mx-5">vs</span> <!-- Ajoute une marge horizontale autour du "vs" -->
+                            <span>{{ $match->team2->club_name }}</span>
+                        </h1>
                         <p class="text-md text-gray-600">{{ date('d F Y, H:i', strtotime($match->date)) }}</p>
                     </div>
                     <img src="{{ $match->team2->club_image }}" alt="Inter" class="h-20">
                 </div>
                 <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">{{ $match->name }}</h2>
-                <p class="text-gray-500 text-sm">By <a href="#" class="text-indigo-600 hover:underline"> {{ $match->stade->name }}</a></p>
+                <p class="text-gray-500 text-sm">Lieu : <a href="#" class="text-indigo-600 hover:underline"> {{ $match->stade->name }}</a></p>
 
                 <div class="flex items-center space-x-4 my-4">
                     <div>
@@ -58,7 +61,7 @@
                             <span class="font-bold text-indigo-600 text-3xl">{{ $match->price}}</span>
                         </div>
                     </div>
-                </div>      
+                </div>
                 <form action="{{ route('cart.create') }}" method="POST" class="mt-4">
                     @csrf
                     <input type="hidden" name="id_match" value="{{ $match->id_match }}">
@@ -67,6 +70,15 @@
                         <div class="mb-3">
                             <label for="quantity" class="block text-sm font-medium text-gray-700">Quantité :</label>
                             <input type="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" id="quantity" name="quantity" placeholder="ex: 1" min="0" value="{{ old('quantity') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="block text-sm font-medium text-gray-700">Catégorie :</label>
+                            <select id="category" name="category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
                         </div>
                     </div>
                     <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Acheter</button>

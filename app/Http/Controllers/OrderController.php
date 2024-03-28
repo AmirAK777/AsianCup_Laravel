@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Auth;;
 use App\Http\Requests\CommandRequest;
 use App\Models\Command;
 use App\Models\CommandDetail;
-use App\Mail\OrderConfirmation;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -17,27 +16,23 @@ class OrderController extends Controller
     {
         $validatedData = $request->validate([
             'quantity' => 'required|integer|min:1',
+            'category' => 'required|integer|min:1',
         ]);
-
-        $command = Command::firstOrNew([
-            'user_id' => Auth::user()->id
-        ]);
+        $command = Command::firstOrCreate(['user_id' => Auth::user()->id]);
 
         $cartDetail = CommandDetail::updateOrCreate([
             'command_id' => $command->id,
             'id_match' => $request->id_match,
             'billet_date' => $request->billet_date,
+            'category' => $request->category,
+
         ], [
             'quantity' => $validatedData['quantity'],
         ]);
+        Log::channel('abuse')->info($cartDetail);
 
         $command->save();
-        
-
-        $command->load('user', 'match');
-        Mail::to($command->user->email)->send(new OrderConfirmation($command));
-
-        $status = $cartDetail->wasRecentlyCreated ? 'Berhasil menambahkan barang ke pesanan' : 'Pesanan berhasil diubah';
+        $status = $cartDetail->wasRecentlyCreated ? 'Successfully added item(s) to the order' : 'Order successfully updated';
 
         return redirect()->route('matches.show', ['id' => $request->id_match])->with('status', $status);
     }
