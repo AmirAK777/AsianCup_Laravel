@@ -21,7 +21,8 @@ class Billet extends Model
         'quantity',
         'billet_date',
         'status',
-        'category'
+        'category',
+        'is_for_sale'
     ];
 
     protected $dates = [
