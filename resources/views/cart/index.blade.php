@@ -1,13 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Vérification de la commande') }}
-        </h2>
-    </x-slot>
+
 
     <div class="container mx-auto py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class=" overflow-y-auto max-h-[85vh]">
+            <div class="overflow-y-auto max-h-[85vh]">
                 @foreach ($commands as $command)
                 @if (isset($command['id_match']))
                 @include('components.match-command-card', ['command' => $command])
@@ -18,12 +14,12 @@
             </div>
             <div class="overflow-y-auto max-h-[85vh]">
                 @if($commands->count() > 0)
-                <div class="bg-white shadow rounded p-6">
+                <div class="p-6 rounded border border-orange-300 border-solid bg-emerald-600 bg-opacity-20  text-gray-800 dark:text-white">
                     <h2 class="text-2xl font-semibold mb-4">Détails du paiement</h2>
                     <div class="space-y-2">
                         @foreach ($commands as $command)
                         <div class="article">
-                            <div class="flex justify-between">
+                            <div class="flex justify-around">
                                 <div>
                                     @if(isset($command->billet))
                                     <p>Racaht de billet :</p>
@@ -83,6 +79,7 @@
                 </div>
                 @endif
             </div>
+
         </div>
     </div>
 </x-app-layout>

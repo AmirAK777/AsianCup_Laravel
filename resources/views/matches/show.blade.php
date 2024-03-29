@@ -1,46 +1,44 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Match Details') }}
-        </h2>
-    </x-slot>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
-        <div class="flex flex-col md:flex-row -mx-4">
-            <div class="flex-1 px-4">
-                <div x-data="{ image: 1, images: ['{{$match->match_image}}', '{{$match->match->stade->graph_image}}'] }" x-cloak>
-                    <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
-                        <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                            <img class="max-h-full max-w-full" :src="images[0]" alt="Description de l'image">
-                        </div>
-
-                        <div x-show="image === 2" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                            <img class="max-h-full max-w-full" :src="images[1]" alt="Description de l'image">
-                        </div>
-
-                        <!-- <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                            <img class="max-h-full max-w-full" :src="images[2]" alt="Description de l'image">
-                        </div>
-
-                        <div x-show="image === 4" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                            <img class="max-h-full max-w-full" :src="images[3]" alt="Description de l'image">
-                        </div> -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 overflow-hidden shadow-xl sm:rounded-lg p-6">
+        <div class="flex  justify-center">
+            <div class="flex-1 rounded-lg border-zinc-800 max-w-[382px]">
+                <section class="flex flex-col mx-auto w-full bg-white shadow-xl max-w-[480px] rounded-[30px]">
+                    <div class="w-full " role="img" aria-label="Placeholder image">
+                        <img class="rounded-[30px]" src="{{$match->match_image}}" alt="">
+                        <img src="{{$match->match->stade->graph_image}}" alt="">
                     </div>
-
-                    <div class="md:flex md:-mx-2 mb-4">
-                        <template x-for="i in 2">
-                            <div class="flex-1 px-2">
-                                <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                                    <img :src="images[i-1]" alt="Description de l'image" class="max-h-full max-w-full">
-                                </button>
+                    <div class="flex flex-col px-4 p-6 w-full bg-black">
+                        <div class="flex flex-col justify-center items-start">
+                            @if(session('success'))
+                            <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                                <div class="flex">
+                                    <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                                        </svg></div>
+                                    <div>
+                                        <p class="font-bold">{{ session('success') }}</p>
+                                    </div>
+                                </div>
+                            </div> @endif
+                            @if(session('error'))
+                            <div class="bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
+                                <div class="flex">
+                                    <div class="py-1"><svg class="fill-current h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                                        </svg></div>
+                                    <div>
+                                        <p class="font-bold">{{ session('error') }}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </template>
+                            @endif
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
-            <div class="md:flex-1 px-4">
+            <div class=" px-4">
                 <div class="flex flex-col py-5 rounded-lg border border-solid border-zinc-800 max-w-[382px]" style="background: linear-gradient(180deg, #24242f 0%, #15131d 100%);">
-                    @if($billetsRestants > 0)
                     <form action="{{ route('cart.create') }}" method="POST" class="mt-4">
                         @csrf
                         <input type="hidden" name="id_match" value="{{ $match->id_match }}">
@@ -133,18 +131,24 @@
                                 <input for="category" id="category" name="category" placeholder="ex: 1" min="0" class="rounded border border-orange-300 border-solid bg-emerald-600 bg-opacity-10 text-amber-600" required>
                                 <div class="px-2 flex gap-1 mt-2 text-amber-600">
                                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7h-1M8 7h-.688M13 5v4m-2-2h4" />
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 12A2.5 2.5 0 0 1 21 9.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v2.5a2.5 2.5 0 0 1 0 5V17a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2.5a2.5 2.5 0 0 1-2.5-2.5Z" />
                                     </svg>
                                 </div>
                             </div>
+                            @if($billetsRestants > 0)
+
                             <button type="submit" class=" m-1flex justify-center px-8 py-3.5 mt-4 capitalize rounded-sm border border-sky-600 border-solid bg-blue-400 bg-opacity-20">
                                 <span class="grow text-sm tracking-wide capitalize text-zinc-200">Acheter</span>
                             </button>
+                            @else
+                            <button disabled class=" m-1flex justify-center px-8 py-3.5 mt-4 capitalize rounded-sm border border-red-600 border-solid bg-red-400 bg-opacity-20">
+                                <span class="text-sm tracking-wide capitalize text-zinc-200">Plus de tickets</span>
+                            </button>
+                            @endif
+
                         </div>
                     </form>
-                    @else
-                    <p>Désolé, il n'y a plus de billets disponibles pour ce match.</p>
-                    @endif
+
                 </div>
 
 
