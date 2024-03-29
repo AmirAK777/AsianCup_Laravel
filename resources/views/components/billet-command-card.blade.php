@@ -10,12 +10,14 @@
             <p class="text-sm text-gray-600 mt-2">Prix total : {{ number_format($command->total_price, 0, ',', '.') }} €</p>
         </div>
     </div>
-    <form action="{{route('cartSell.delete', ['id' => $command->id])}}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger text-gray">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg> </button>
-    </form>
+    <form action="{{ route('cart.delete', ['id' => $command->id]) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger text-gray">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+</form>
+
 </div>

@@ -1,31 +1,34 @@
-<div class="rounded-3xl xl:p-10 bg-white shadow-md ">
-    <div class="products__header p-6 bg-custom-black text-white">
-        <h2 class="text-lg font-semibold leading-8 text-gray-900 text-center">{{ $match->name }}</h2>
+<section class="flex flex-col grow p-6 mx-auto w-full text-xs bg-gray-900 rounded-lg max-md:px-5 max-md:mt-4">
+    <div class="flex gap-5 justify-between w-full text-white text-opacity-60">
+        <div class="flex gap-2 capitalize">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f0b00e140435228bea81e21e8b2084e66771dfef66d69f2ff5ee433d72cddf98?apiKey=97622c207ace4937b2e9a053c7073cf1&" alt="Premier League logo" class="shrink-0 w-5 aspect-[1.25]" />
+            <p>{{ $match->name }}</p>
+        </div>
+        <time datetime="2023-02-02T00:00">{{ $match->date }}</time>
     </div>
-    <div class="flex justify-around items-center py-6">
-        <img src="{{ $team1->club_image }}" alt="{{ $team1->club_name }}" class="h-24 object-contain">
-        <span class="text-3xl font-bold text-gray-600">VS</span>
-        <img src="{{ $team2->club_image }}" alt="{{ $team2->club_name }}" class="h-24 object-contain">
+    <div class="flex gap-5 justify-between mt-6 text-sm font-semibold text-white whitespace-nowrap">
+        <div class="flex flex-col">
+            <img loading="lazy" src="{{ $team1->club_image }}" alt="Chelsea logo" class="h-10 w-10 aspect-square" />
+            <p class="mt-2">{{ $team1->club_name }}</p>
+        </div>
+        <p class="my-auto text-xs text-white text-opacity-60">VS</p>
+        <div class="flex flex-col">
+            <img loading="lazy" src="{{ $team2->club_image }}" alt="Liverpool logo" class="self-end h-10 w-10 aspect-square" />
+            <p class="mt-2">{{ $team2->club_name }}</p>
+        </div>
     </div>
-    <ul role="list" class="mt-8 space-y-3 text-sm leading-6 xl:mt-10">
-        <li class="flex gap-x-3">
-            <img src="https://www.ticketkosta.com/images/calendar.svg" alt="Location" class="h-6 mr-2">
-            <span>{{ $match->date }}</span>
-        </li>
-        <li class="flex gap-x-3">
-            <img src="https://www.ticketkosta.com/images/soccer.svg" alt="Soccer" class="h-6 mr-2">
-            <span>{{ $match->date }} - {{ $match->time }}</span>
-        </li>
-        <li class="flex gap-x-3">
-            <img src="https://www.ticketkosta.com/images/location.svg" alt="Location" class="h-6 mr-2">
-            <span>{{ $match->stade->name }}</span>
-        </li>
-    </ul>
-    <div class="products__footer p-6 flex justify-center">
-        <form method="GET" action="{{ route('matches.show', ['id' => $match->id_match]) }}">
-            <x-primary-button type="submit">
+    <div class="flex gap-4 mt-6 whitespace-nowrap justify-center">
+        <div class="flex flex-1 gap-4 justify-center px-4 py-2 bg-gray-800 rounded">
+            <p class="text-white text-opacity-60">1</p>
+            <p class="font-semibold text-white">1.87</p>
+        </div>
+        <x-primary-button type="submit">
                 {{ __('Details') }}
             </x-primary-button>
-        </form>
+        <div class="flex flex-1 gap-4 justify-center px-4 py-2 bg-gray-800 rounded">
+            <p class="text-white text-opacity-60">2</p>
+            <p class="font-semibold text-white">1.87</p>
+        </div>
+   
     </div>
-</div>
+</section>

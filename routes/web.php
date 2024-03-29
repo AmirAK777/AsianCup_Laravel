@@ -87,7 +87,6 @@ Route::middleware('auth')->group(function () {
     // Route::patch('/review/{id}', [TestimonyController::class, 'update'])->name('testimony.update');
     //DELETE
     Route::delete('/cart/{id}', [OrderController::class, 'delete'])->name('cart.delete');
-    Route::delete('/cart/{id}', [OrderController::class, 'deleteSell'])->name('cartSell.delete');
 
 
     Route::post('/billet/{id}/sell', [BilletController::class, 'sellTicket'])->name('billet.sell');

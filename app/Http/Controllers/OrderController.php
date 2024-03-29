@@ -76,7 +76,7 @@ class OrderController extends Controller
         $ticketDetails = $command->details;
 
         $commands = $matchDetails->merge($ticketDetails);
-      
+
         return view('cart.index', compact('commands'));
     }
 
@@ -104,23 +104,24 @@ class OrderController extends Controller
 
     public function delete($id)
     {
-        $cart = CommandDetail::findOrFail($id);
+        // Essayer de trouver le modèle CommandDetail
+        $cartDetail = CommandDetail::find($id);
 
-        if ($cart->delete())
-            return redirect()->route('cart.index')->with('success', 'Berhasil menghapus keranjang');
+        // Si le modèle CommandDetail n'est pas trouvé, essayer CommandSellDetail
+        if (!$cartDetail) {
+            $cartDetail = CommandSellDetail::find($id);
+        }
 
-        else
-            return redirect()->route('cart.index')->with('fail', 'Gagal menghapus keranjang');
-    }
-
-    public function deleteSell($id)
-    {
-        $cart = CommandSellDetail::findOrFail($id);
-
-        if ($cart->delete())
-            return redirect()->route('cart.index')->with('success', 'Berhasil menghapus keranjang');
-
-        else
-            return redirect()->route('cart.index')->with('fail', 'Gagal menghapus keranjang');
+        // Si un modèle est trouvé, supprimer et rediriger en conséquence
+        if ($cartDetail) {
+            if ($cartDetail->delete()) {
+                return redirect()->route('cart.index')->with('success', 'Berhasil menghapus keranjang');
+            } else {
+                return redirect()->route('cart.index')->with('fail', 'Gagal menghapus keranjang');
+            }
+        } else {
+            // Aucun modèle trouvé avec l'ID donné
+            return redirect()->route('cart.index')->with('fail', 'Keranjang tidak ditemukan');
+        }
     }
 }
