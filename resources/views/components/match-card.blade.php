@@ -1,4 +1,5 @@
-<section class="flex flex-col grow p-6 mx-auto w-full text-xs bg-gray-900 rounded-lg max-md:px-5 max-md:mt-4">
+<article class="flex flex-col grow p-6 mx-auto w-full text-xs bg-gray-900 rounded-lg max-md:px-5 max-md:mt-4" style="background-color: #130D25;">
+
     <div class="flex gap-5 justify-between w-full text-white text-opacity-60">
         <div class="flex gap-2 capitalize">
             <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f0b00e140435228bea81e21e8b2084e66771dfef66d69f2ff5ee433d72cddf98?apiKey=97622c207ace4937b2e9a053c7073cf1&" alt="Premier League logo" class="shrink-0 w-5 aspect-[1.25]" />
@@ -22,13 +23,16 @@
             <p class="text-white text-opacity-60">1</p>
             <p class="font-semibold text-white">1.87</p>
         </div>
-        <x-primary-button type="submit">
+        <form method="GET" action="{{ route('matches.show', ['id' => $match->id_match]) }}">
+            <x-primary-button type="submit">
                 {{ __('Details') }}
             </x-primary-button>
+        </form>
+
         <div class="flex flex-1 gap-4 justify-center px-4 py-2 bg-gray-800 rounded">
             <p class="text-white text-opacity-60">2</p>
             <p class="font-semibold text-white">1.87</p>
         </div>
-   
+
     </div>
-</section>
+</article>
