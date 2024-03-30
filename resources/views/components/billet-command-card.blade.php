@@ -1,4 +1,4 @@
-<div class="flex flex-1 mb-6 gap-1 px-4 py-3 rounded border border-orange-300 border-solid bg-emerald-600 bg-opacity-20  text-gray-800 dark:text-white">
+<div class="flex flex-1 mb-6 gap-1 px-4 py-3 rounded border border-gray-700 border-solid bg-emerald-600 bg-opacity-20  text-gray-800 dark:text-white">
     <img src="https://static.vecteezy.com/system/resources/previews/024/742/748/original/businessman-hand-buy-ticket-ticket-scalper-symbol-cartoon-illustration-vector.jpg" alt="product-image" class="h-32 w-64 rounded-lg sm:w-40" />
 
     <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">

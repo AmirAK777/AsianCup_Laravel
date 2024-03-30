@@ -14,7 +14,7 @@
             </div>
             <div class="overflow-y-auto max-h-[85vh]">
                 @if($commands->count() > 0)
-                <div class="p-6 rounded border border-orange-300 border-solid bg-emerald-600 bg-opacity-20  text-gray-800 dark:text-white">
+                <div class="p-6 rounded border border-gray-700 border-solid bg-emerald-600 bg-opacity-20  text-gray-800 dark:text-white">
                     <h2 class="text-2xl font-semibold mb-4">Détails du paiement</h2>
                     <div class="space-y-2">
                         @foreach ($commands as $command)
@@ -36,14 +36,14 @@
                                     <div>Prix billet unité : {{ number_format($command->match->price, 0, ',', '.') }} €</div>
                                     <div>La catégorie choisie : {{$command->category}} est de {{ number_format($command->match->price * $command->category, 0, ',', '.') }} €</div>
                                     <div>Nombre de billets : {{$command->quantity}}</div>
-                                    <p class="text-sm text-gray-600 mt-2">Prix total : {{ number_format($command->total_price, 0, ',', '.') }} €</p>
+                                    <div>Prix total : {{ number_format($command->total_price, 0, ',', '.') }} €<div>
 
                                     @else
                                     <div>Billet pour le match de : {{ $command->billet->match->name }}</div>
                                     <div>Prix du billet : {{ $command->billet->match->price }}</div>
                                     <div>La catégorie : {{ $command->billet->category}}</div>
                                     <div>La quantité : {{ $command->billet->quantity}}</div>
-                                    <p class="text-sm text-gray-600 mt-2">Prix total : {{ number_format($command->total_price, 0, ',', '.') }} €</p>
+                                    <div>Prix total : {{ number_format($command->total_price, 0, ',', '.') }} €<div>
 
                                     @endif
                                 </div>
