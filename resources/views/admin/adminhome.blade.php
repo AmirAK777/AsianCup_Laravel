@@ -4,13 +4,13 @@
             <div class="flex flex-col w-[39%] max-md:ml-0 max-md:w-full">
                 <div class="flex flex-col self-stretch my-auto max-md:mt-10 max-md:max-w-full">
                     <h1 class="text-3xl text-green-500 max-md:max-w-full">
-                        <span class="text-2xl leading-7 text-white">SIGN UP & GET REWARD</span>
+                        <span class="text-2xl leading-7 text-white">CONNECTEZ-VOUS ET ACHETEZ.</span>
                         <br />
-                        <span class="text-6xl font-extrabold leading-[68px]">UP TO</span>
-                        <span class="text-6xl font-extrabold text-green-500 leading-[68px]">$ 20,000</span>
+                        <span class="text-6xl font-extrabold leading-[68px]">SÉCURISEZ VOS BILLETS </span>
+                        <span class="text-6xl font-extrabold text-green-500 leading-[68px]">DÈS AUJOURD'HUI!</span>
                     </h1>
                     <button class="justify-center self-start px-8 py-2 mt-7 text-sm font-semibold leading-6 text-white bg-pink-700 rounded max-md:px-5">
-                        Create Account
+                        <a href="/billet">Mes Billets !</a>
                     </button>
                 </div>
             </div>
