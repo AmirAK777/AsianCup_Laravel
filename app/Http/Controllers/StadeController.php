@@ -17,11 +17,19 @@ class StadeController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'cty' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'graph_image' => 'required|url',
+            'place' => 'required|numeric|min:0',
+
         ]);
 
         Stade::create([
             'name' => $request->name,
             'cty' => $request->cty,
+            'location' => $request->location,
+            'graph_image' => $request->graph_image,
+            'place' => $request->place,
+
         ]);
 
         return redirect()->route('stades.create')->with('success', 'Stade created successfully.');
