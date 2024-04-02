@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="flex flex-col my-auto leading-[100%]">
-                                <div class="text-2xl tracking-tight text-center text-white">3 - 0</div>
+                                <div class="text-2xl tracking-tight text-center text-white">VS</div>
                                 <div class="justify-center py-1 mt-1.5 text-xs font-light capitalize whitespace-nowrap rounded-sm text-zinc-200">{{ date('d F Y, H:i', strtotime($match->date)) }}</div>
                             </div>
                             <div class="flex flex-col">
