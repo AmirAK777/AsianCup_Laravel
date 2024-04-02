@@ -303,61 +303,61 @@ function carousel() {
     activeSlide: 0,
     slides: [
       {
-        image: "{{ asset('storage/images/stade.jpg') }}",
+        image: "{{ asset('images/stade.jpg') }}",
         title: "1. Khalifa International Stadium",
         description: "Découvrez le Stade International Khalifa, une icône du sport Qatari, et explorez son histoire riche et son architecture futuriste.",
         link: "https://visitqatar.com/fr-fr/things-to-do/adventures/other-sports-and-activities/khalifa-international-stadium"
       },
       {
-        image: "{{ asset('storage/images/thecorniche.png') }}",
+        image: "{{ asset('images/thecorniche.png') }}",
         title: "2. The Corniche",
         description: "Découvrez la magie de la Corniche, entre mer et skyline, pour une expérience inoubliable au Qatar",
         link: "https://visitqatar.com/fr-fr/highlights/iconic-places/the-corniche"
       },
       {
-        image: "{{ asset('storage/images/archipel1.png') }}",
+        image: "{{ asset('images/archipel1.png') }}",
         title: "3. The Pearl Island",
         description: "Découvrez le luxe insulaire de The Pearl au Qatar, où élégance et modernité se rencontrent pour une expérience inoubliable",
         link: "https://visitqatar.com/fr-fr/highlights/iconic-places/the-pearl-qatar"
       },
       {
-        image: "{{ asset('storage/images/mosque.png') }}",
+        image: "{{ asset('images/mosque.png') }}",
         title: "4. State Grand Mosque",
         description: "Découvrez la majesté spirituelle de la Mosquée Imam Abdul Wahhab au Qatar, un symbole de piété et de beauté architecturale.",
         link: "https://visitqatar.com/fr-fr/highlights/iconic-places/imam-abdul-wahhab-mosque"
       },
       {
-        image: "{{ asset('storage/images/test.jpg') }}",
+        image: "{{ asset('images/test.jpg') }}",
         title: "5. Qatar Islamic Cultural Center",
         description: "Plongez dans la sérénité et la splendeur architecturale de la Mosquée Sheikh Abdulla Bin Zaid Al Mahmoud, un trésor spirituel au cœur du Qatar.",
         link: "https://visitqatar.com/fr-fr/highlights/iconic-places/sheikh-abdulla-bin-zaid-almahmoud"
       },
       {
-        image: "{{ asset('storage/images/katara.png') }}",
+        image: "{{ asset('images/katara.png') }}",
         title: "6. Katara Mosque",
         description: "Explorez la tranquillité de la Mosquée Katara, alliant tradition et modernité au Qatar.",
         link: "https://www.tripadvisor.fr/Attraction_Review-g294009-d8435229-Reviews-Katara_Mosque-Doha.html"
       },
       {
-        image: "{{ asset('storage/images/wakara.jpg') }}",
+        image: "{{ asset('images/wakara.jpg') }}",
         title: "7. Al Wakrah Souq",
         description: "Plongez dans l'authenticité du Souq Al Wakrah, où l'histoire rencontre la vie moderne dans un marché animé au Qatar.",
         link: "https://www.tripadvisor.fr/Attraction_Review-g3221436-d9742366-Reviews-Al_Wakrah_Souq-Al_Wakrah.html"
       },
       {
-        image: "{{ asset('storage/images/souqwaqif.jpg') }}",
+        image: "{{ asset('images/souqwaqif.jpg') }}",
         title: "8. Souq Waqif",
         description: "Laissez-vous emporter par les couleurs, les parfums et l'ambiance envoûtante du Souq Waqif.",
         link: "https://visitqatar.com/fr-fr/highlights/iconic-places/12-things-to-do-in-souq-waqif"
       },
       {
-        image: "{{ asset('storage/images/dafnapark.png') }}",
+        image: "{{ asset('images/dafnapark.png') }}",
         title: "9. Dafna Park",
         description: "Détendez-vous au cœur de la nature urbaine au Dafna Park, un havre de paix où verdure et tranquillité se rencontrent au Qatar.",
         link: "https://www.tripadvisor.fr/Attraction_Review-g294009-d12030499-Reviews-Dafna_Park-Doha.html"
       },
       {
-        image: "{{ asset('storage/images/downtown1.jpg') }}",
+        image: "{{ asset('images/downtown1.jpg') }}",
         title: "10. Msheireb Downtown Doha",
         description: "Explorez le cœur vibrant de Doha à Msheireb Downtown, entre modernité et tradition qataries.",
         link: "https://visitqatar.com/fr-fr/highlights/iconic-places/msheireb-downtown"
