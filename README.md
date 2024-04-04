@@ -22,6 +22,9 @@ Le projet est développé en utilisant le framework Laravel. Pour mettre en plac
 ## Packages Utilisés
 Le projet utilise le package Breeze pour la gestion de l'authentification. Il dispose également de plusieurs systèmes de gestion d'erreurs pour assurer une expérience utilisateur fluide.
 
+## Lien du Site
+Le site est actuellement hébergé à l'adresse suivante : [Lien du site](http://141.145.202.117:8000/)
+
 ## Instructions d'Installation
 1. Cloner le dépôt
 2. Exécuter `php migrate` pour mettre en place la base de données
